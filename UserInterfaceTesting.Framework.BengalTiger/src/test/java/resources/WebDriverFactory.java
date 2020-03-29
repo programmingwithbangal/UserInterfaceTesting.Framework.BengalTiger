@@ -2,6 +2,7 @@ package resources;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 
 public class WebDriverFactory 
 {
@@ -13,8 +14,11 @@ public class WebDriverFactory
 		//Invoke driver.exe
 		System.setProperty("webdriver.chrome.driver", path + "/drivers/chromedriver80/chromedriver.exe");
 		
+		ChromeOptions chromeOptions = new ChromeOptions();
+		chromeOptions.addArguments("--headless", "--window-size=1920,1200","--ignore-certificate-errors");
+
 		//Create Driver object
-		WebDriver driver = new ChromeDriver();
+		WebDriver driver = new ChromeDriver(chromeOptions);
 		return driver;
 	}
 }
